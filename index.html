@@ -906,8 +906,9 @@
         </div>
       `).join('');
 
-      const profilePicHtml = agent.profilePic
-        ? `<div class="agent-profile-slot"><img class="agent-profile-pic" src="${escapeHtml(agent.profilePic)}" alt="${escapeHtml(agent.name || '')}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div class="agent-profile-placeholder" style="display:none;">头像</div></div>`
+      const profilePicSrc = agent.profilePic || (agent.id ? `assets/${agent.id}.png` : null);
+      const profilePicHtml = profilePicSrc
+        ? `<div class="agent-profile-slot"><img class="agent-profile-pic" src="${escapeHtml(profilePicSrc)}" alt="${escapeHtml(agent.name || '')}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div class="agent-profile-placeholder" style="display:none;">头像</div></div>`
         : `<div class="agent-profile-slot"><div class="agent-profile-placeholder">头像</div></div>`;
 
       return `

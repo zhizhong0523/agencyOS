@@ -26,11 +26,20 @@ npx serve .
 ```
 agencyOS/
 ├── index.html          # 主页面
+├── assets/             # 图片资源
+│   ├── gm-profile.png  # 机构总经理头像
+│   ├── agent-1.png     # 特工头像（按 agent id 命名）
+│   └── ...
 ├── data/
 │   ├── statuses.json   # 特工状态数据（源数据）
 │   └── arc-reference.json  # ARC 参考（供本地编辑器使用）
 └── README.md
 ```
+
+## 特工头像
+
+- **命名约定**：将头像图片命名为 `{agent-id}.png` 放入 `assets/` 目录，例如 `agent-1.png`、`agent-2.png`
+- **自定义路径**：也可在 `statuses.json` 中为特工添加 `"profilePic": "assets/自定义路径.png"` 覆盖默认
 
 ## 数据更新
 
