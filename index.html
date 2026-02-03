@@ -761,25 +761,6 @@
       color: var(--text-secondary);
     }
 
-    .refresh-btn {
-      margin-left: auto;
-      background: var(--accent-red);
-      color: white;
-      border: 1px solid var(--accent-red);
-      padding: 0.5rem 1rem;
-      font-family: inherit;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.2s;
-      box-shadow: 0 0 10px var(--glow-red-soft);
-    }
-
-    .refresh-btn:hover {
-      background: var(--accent-red-dark);
-      box-shadow: 0 0 20px var(--glow-red), 0 0 30px var(--glow-red-soft);
-    }
-
     /* Subtle neon pulse */
     @keyframes neon-pulse {
 
@@ -824,6 +805,46 @@
         display: none;
       }
     }
+
+    @media (min-width: 1400px) {
+      html {
+        font-size: 18px;
+      }
+
+      .sidebar {
+        width: 320px;
+        min-width: 320px;
+      }
+
+      .agency-news {
+        min-height: 140px;
+        max-height: 320px;
+      }
+
+      .agents-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      }
+    }
+
+    @media (min-width: 1800px) {
+      html {
+        font-size: 20px;
+      }
+
+      .sidebar {
+        width: 360px;
+        min-width: 360px;
+      }
+
+      .agency-news {
+        min-height: 160px;
+        max-height: 360px;
+      }
+
+      .agents-grid {
+        grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      }
+    }
   </style>
 </head>
 
@@ -837,7 +858,6 @@
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="按特工名称或代号搜索…" />
     </div>
-    <button class="refresh-btn" id="refreshBtn">刷新</button>
   </header>
 
   <div class="layout">
@@ -1051,7 +1071,6 @@
       }
     }
 
-    document.getElementById('refreshBtn').addEventListener('click', load);
     document.getElementById('searchInput').addEventListener('input', () => {
       const filtered = filterAgents(document.getElementById('searchInput').value);
       renderContent(filtered);
