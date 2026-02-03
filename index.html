@@ -389,6 +389,7 @@
     }
 
     .agent-card {
+      position: relative;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -400,6 +401,23 @@
     .agent-card:hover {
       border-color: var(--accent-red-dark);
       box-shadow: 0 0 25px var(--glow-red-soft), 0 0 40px var(--glow-red-soft);
+    }
+
+    .agent-badges {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.35rem;
+      z-index: 1;
+      background: transparent;
+    }
+
+    .agent-badge-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      background: transparent;
     }
 
     .agent-card-header {
@@ -934,8 +952,14 @@
         ? `<div class="agent-profile-slot"><img class="agent-profile-pic" src="${escapeHtml(profilePicSrc)}" alt="${escapeHtml(agent.name || '')}" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src=this.src.replace(/\\.PNG$/i,'.png');}else{this.style.display='none';this.nextElementSibling.style.display='flex';}" /><div class="agent-profile-placeholder" style="display:none;">头像</div></div>`
         : `<div class="agent-profile-slot"><div class="agent-profile-placeholder">头像</div></div>`;
 
+      const badgesHtml = [];
+      if (agent.flag) badgesHtml.push('<img class="agent-badge-img" src="assets/flag.png" alt="flag" />');
+      if (agent.socks) badgesHtml.push('<img class="agent-badge-img" src="assets/socks.png" alt="socks" />');
+      const badgesEl = badgesHtml.length ? `<div class="agent-badges">${badgesHtml.join('')}</div>` : '';
+
       return `
         <div class="agent-card">
+          ${badgesEl}
           <div class="agent-card-header">
             <div class="agent-header-top">
               ${profilePicHtml}
