@@ -100,7 +100,7 @@
       "申诫": 1,
       "mvp": 0,
       "察看期": 0,
-      "flag": true,
+      "flag": false,
       "socks": false,
       "申领物": [
         {
@@ -172,7 +172,7 @@
       "mvp": 0,
       "察看期": 0,
       "flag": false,
-      "socks": true,
+      "socks": false,
       "申领物": [
         {
           "name": "三倍浓缩杯",
