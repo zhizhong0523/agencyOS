@@ -1002,18 +1002,9 @@
 
     .arc-badges {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       gap: 0.5rem;
-      overflow-x: auto;
-    }
-
-    .arc-badges::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .arc-badges::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 2px;
+      min-width: 0;
     }
 
     .arc-badge {
@@ -1024,6 +1015,8 @@
       border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 600;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .arc-badge.异常 {
@@ -1078,6 +1071,13 @@
       flex-wrap: wrap;
       gap: 0.75rem 1rem;
       margin-top: 0.5rem;
+    }
+
+    .score-group {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      gap: 1rem;
+      align-items: center;
     }
 
     .score {
@@ -1719,7 +1719,7 @@
       }
 
       .agents-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       }
     }
 
@@ -1739,7 +1739,7 @@
       }
 
       .agents-grid {
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
       }
     }
   </style>
@@ -2006,10 +2006,14 @@
 
       const scoresHtml = `
         <div class="agent-scores">
-          <div class="score 嘉奖"><span class="score-icon">★</span>嘉奖 <strong>${agent.嘉奖 ?? 0}</strong></div>
-          <div class="score 申诫"><span class="score-icon">✗</span>申诫 <strong>${agent.申诫 ?? 0}</strong></div>
-          <div class="score 察看期"><span class="score-icon">▣</span>察看期 <strong>${agent.察看期 ?? 0}</strong></div>
-          <div class="score mvp"><span class="score-icon">◆</span>MVP <strong>${agent.mvp ?? agent.任务MVP ?? 0}</strong></div>
+          <div class="score-group">
+            <div class="score 嘉奖"><span class="score-icon">★</span>嘉奖 <strong>${agent.嘉奖 ?? 0}</strong></div>
+            <div class="score 申诫"><span class="score-icon">✗</span>申诫 <strong>${agent.申诫 ?? 0}</strong></div>
+          </div>
+          <div class="score-group">
+            <div class="score 察看期"><span class="score-icon">▣</span>察看期 <strong>${agent.察看期 ?? 0}</strong></div>
+            <div class="score mvp"><span class="score-icon">◆</span>MVP <strong>${agent.mvp ?? agent.任务MVP ?? 0}</strong></div>
+          </div>
         </div>
       `;
 
